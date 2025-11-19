@@ -63,3 +63,17 @@ qc.draw("mpl", scale=0.8, fold=-1)
 
 ![Quantum Circuit](tutorials/circuit.png)
 
+## Citing ExtraFerm
+
+You can cite ExtraFerm using the following BibTeX:
+```bibtex
+@misc{hassman2025enhancingchemistryquantumcomputers,
+      title={Enhancing Chemistry on Quantum Computers with Fermionic Linear Optical Simulation}, 
+      author={Zack Hassman and Oliver Reardon-Smith and Gokul Subramanian Ravi and Frederic T. Chong and Kevin J. Sung},
+      year={2025},
+      eprint={2511.12416},
+      archivePrefix={arXiv},
+      primaryClass={quant-ph},
+      url={https://arxiv.org/abs/2511.12416}, 
+}
+```
