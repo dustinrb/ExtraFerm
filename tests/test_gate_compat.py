@@ -47,4 +47,24 @@ def test_global_phase(circ):
     probs = outcome_probabilities(circuit=circ, outcome_states=0b1010)
 
 
+def test_barrier(circ):
+    circ = circ.decompose(["hartree_fock_jw"])
+    circ = circ.decompose(["slater_jw"])
+    # Strip the global phase gate
+    circ = qiskit.QuantumCircuit.from_instructions([inst for inst in circ.data if inst.operation.name != "global_phase"])
+    # print(circ.count_ops())
+    probs = outcome_probabilities(circuit=circ, outcome_states=0b1010)
+
+
+# def test_x_gates(circ):
+#     circ = circ.decompose(["hartree_fock_jw"])
+#     circ = circ.decompose(["slater_jw"])
+#     # Strip the global phase gate
+#     circ = qiskit.QuantumCircuit.from_instructions([inst for inst in circ.data if inst.operation.name not in ["global_phase", "barrier", "measure"]])
+
+#     # Remove possible barriers
+#     circ = ffsim.qiskit.PRE_INIT.run(circ)
+#     # print(circ.count_ops())
+#     probs = outcome_probabilities(circuit=circ, outcome_states=0b1010)
+
 # TODO: X gates
