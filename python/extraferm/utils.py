@@ -7,6 +7,10 @@ from qiskit.circuit import QuantumCircuit
 from scipy.linalg import block_diag
 
 
+# Gate types which do not alter teh matchgate analysis
+NOOP_GATES = ["barrier", "measure", "global_phase"]
+
+
 class CircuitData(NamedTuple):
     """Circuit data structure for the Rust backend."""
 
@@ -127,6 +131,9 @@ def extract_circuit_data(circuit: QuantumCircuit) -> CircuitData:
             b = np.asarray(instr.operation.orbital_rotation_b, dtype=np.complex128)
             m = block_diag(a, b)
             orb_mats.append(m)
+
+        elif name in NOOP_GATES:
+            pass # These gates to not alter the probabilities
 
         else:
             raise ValueError(f"Unexpected gate '{name}' in circuit.")
